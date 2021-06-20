@@ -2,7 +2,7 @@ import React, { useState, } from 'react'
 import { useTable } from "react-table"
 
 // Create a state
-const [filterInput, stFilterInput] = useState("");
+const [filterInput, setFilterInput] = useState("");
 // Use state and functions treturnd from usetable to build UI
 const {
     getTableProps,
@@ -16,12 +16,31 @@ const {
         columns,
         data
     },
-    useFilters // Adding the useFilters Hook to the table 
+    useFilters, // Adding the useFilters Hook to the table
+    useSortBy   //to sort table columns 
 );
 
+// to allow sorting
+<th
+    {...column.getHeadreProps(column.getSortByToggleProps())}
+    className={
+        column.isSorted
+            ? column.isSortedDesc
+                ? "sort-desc"
+                : "sort-asc"
+            : ""
+    }
+>
+    {column.render("Header")}
+</th>
 const handleFilterChange = e => {
     const value = e.target.value || undefined;
     setFilter("name", value);
+
+
+    // Update the name filter.
+    // Now the table will search for that name and show only rows which have a matching name
+    setFilterInput(value);
 };
 
 // Input element
