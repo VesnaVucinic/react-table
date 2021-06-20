@@ -1,6 +1,7 @@
 import React, { useState, } from 'react'
-import { useTable } from "react-table"
+import { useTable, useFilters, useSortBy } from "react-table"
 
+export default function Table({columns, data}) {
 // Create a state
 const [filterInput, setFilterInput] = useState("");
 // Use state and functions treturnd from usetable to build UI
@@ -9,6 +10,7 @@ const {
     getTableBodyProps,
     headerGroups,
     rows,
+    column,
     prepareRow, 
     setFilter
 } = useTable(
@@ -80,4 +82,4 @@ return (
         </table>
     </>
 );
-
+}

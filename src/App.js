@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo }from 'react'
 import axios from 'axios';
-import './App'
+import './App.css'
+import Table from "./table.js";
+
 
 function App() {
  // data state to store the Users API data. 
@@ -66,3 +68,5 @@ function App() {
  )
 
 }
+
+export default App;
